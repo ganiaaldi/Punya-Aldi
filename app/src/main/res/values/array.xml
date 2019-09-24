@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="array_dot_inactive">
+        <item>@color/color_dot_inactive</item>
+        <item>@color/color_dot_inactive</item>
+        <item>@color/color_dot_inactive</item>
+    </array>
+</resources>

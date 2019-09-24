@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Punya Aldi</string>
+    <string name="welcome">Selamat Datang</string>
+    <string name="next">LANJUT</string>
+    <string name="skip">LEWATI</string>
+    <string name="start">MULAI</string>
+
+    <string name="slide_1_title">Tentang</string>
+    <string name="slide_1_desc">Aplikasi PunyaAldi merupakan aplikasi coba-coba</string>
+
+    <string name="slide_2_title">Bahasa</string>
+    <string name="slide_2_desc">Dibangun dengan menggunakan Kotlin, dan User Interface berbahasa Indonesia</string>
+
+    <string name="slide_3_title">Motivasi</string>
+    <string name="slide_3_desc">Banyakin latihan biar jago slur</string>
+</resources>
