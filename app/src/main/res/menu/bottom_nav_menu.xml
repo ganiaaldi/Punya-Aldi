@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-            android:id="@+id/firstMenu"
+            android:id="@+id/firstMenuFragment"
             android:icon="@drawable/ic_face"
             android:title="@string/title_menu"
             />
     <item
-            android:id="@+id/secondMenu"
+            android:id="@+id/secondMenuFragment"
             android:icon="@drawable/ic_face"
             android:title="@string/tittle_menu2" />
     <item
-            android:id="@+id/thirdMenu"
+            android:id="@+id/thirdMenuFragment"
             android:icon="@drawable/ic_face"
             android:title="@string/title_menu3" />
 </menu>

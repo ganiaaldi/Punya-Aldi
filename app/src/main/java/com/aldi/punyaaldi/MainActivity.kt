@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity(), ToolbarTitleListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
       //  showSlider()
-        setupMenu()
+     //   setupMenu()
         setupNavController()
         setupDrawer()
         setupActionBar(mNavController, appBarConfiguration)
