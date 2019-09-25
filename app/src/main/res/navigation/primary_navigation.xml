@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/primary_navigation"
+            app:startDestination="@id/firstMenuFragment">
+
+    <fragment android:id="@+id/firstMenuFragment" android:name="com.aldi.punyaaldi.menu.FirstMenuFragment"
+              android:label="fragment_first_menu" tools:layout="@layout/fragment_first_menu"/>
+    <fragment android:id="@+id/secondMenuFragment" android:name="com.aldi.punyaaldi.menu.SecondMenuFragment"
+              android:label="fragment_second_menu" tools:layout="@layout/fragment_second_menu"/>
+    <fragment android:id="@+id/thirdMenuFragment" android:name="com.aldi.punyaaldi.menu.ThirdMenuFragment"
+              android:label="fragment_third_menu" tools:layout="@layout/fragment_third_menu"/>
+</navigation>
