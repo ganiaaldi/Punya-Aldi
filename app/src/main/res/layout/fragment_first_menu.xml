@@ -1,14 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".menu.FirstMenuFragment">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+            android:id="@+id/tvHeader"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment"/>
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Tentang"
+            style="@style/BoldText" />
 
-</FrameLayout>
+    <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearLayoutCompat"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/tvHeader"
+            android:background="@color/colorPrimary" />
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_ShowSlider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="20dp"
+            android:background="@color/white"
+            android:text="Tampilkan Slider"
+            style="@style/BoldText"
+            tools:ignore="HardcodedText" />
+
+    <TextView
+            android:id="@+id/tvIntro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayoutCompat"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"
+            android:text="Tekan Tombol Untuk Kembali ke menu slider"
+            style="@style/RegularText"/>
+
+</RelativeLayout>

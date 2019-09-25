@@ -17,6 +17,7 @@ import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.aldi.punyaaldi.MainActivity
 import com.aldi.punyaaldi.R
+import com.aldi.punyaaldi.menu.FirstMenuFragment
 import kotlinx.android.synthetic.main.activity_slide_screen.*
 
 class SlideScreen : AppCompatActivity() {

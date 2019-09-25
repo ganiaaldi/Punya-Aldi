@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.aldi.punyaaldi.R
+import com.aldi.punyaaldi.`interface`.ToolbarTitleListener
 
 
 class SecondMenuFragment : Fragment() {
@@ -21,4 +22,9 @@ class SecondMenuFragment : Fragment() {
     }
 
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        (activity as ToolbarTitleListener).showToolbar(true)
+        (activity as ToolbarTitleListener).updateTitle("Fragment Menu 2")
+    }
 }

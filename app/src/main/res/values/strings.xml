@@ -17,4 +17,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_menu">Menu</string>
+    <string name="confirm_exit">Tekan sekali lagi untuk keluar.</string>
+    <string name="tittle_menu2">Menu 2</string>
+    <string name="title_menu3">Menu 3</string>
 </resources>

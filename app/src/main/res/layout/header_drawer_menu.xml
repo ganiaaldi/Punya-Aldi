@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="false"
+        android:clickable="false">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@color/colorPrimary"
+                    android:gravity="bottom"
+                    android:padding="16dp"
+                    android:focusableInTouchMode="false"
+                    android:clickable="false"
+                    android:descendantFocusability="blocksDescendants"
+    >
+        <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageAvatar"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="false"
+                android:layout_marginTop="20dp"
+                android:padding="2dp"
+                android:visibility="visible"
+                android:src="@drawable/ic_face"
+                android:layout_marginBottom="12dp"/>
+
+        <TextView
+                android:id="@+id/textUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="4dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:layout_below="@+id/imageAvatar"
+                android:text="Name"
+                android:textStyle="bold"
+                android:fontFamily="@font/opensans_bold" />
+        <TextView
+                android:id="@+id/text_premium_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="4dp"
+                android:textSize="12sp"
+                android:layout_below="@+id/textUserName"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:visibility="gone"
+                android:fontFamily="@font/opensans_regular"/>
+    </RelativeLayout>
+</FrameLayout>
+

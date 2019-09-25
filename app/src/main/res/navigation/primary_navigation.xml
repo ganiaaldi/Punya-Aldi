@@ -5,9 +5,13 @@
             app:startDestination="@id/firstMenuFragment">
 
     <fragment android:id="@+id/firstMenuFragment" android:name="com.aldi.punyaaldi.menu.FirstMenuFragment"
-              android:label="fragment_first_menu" tools:layout="@layout/fragment_first_menu"/>
+              android:label="fragment_first_menu" tools:layout="@layout/fragment_first_menu">
+        <action android:id="@+id/action_firstMenuFragment_to_slideScreen" app:destination="@id/slideScreen"/>
+    </fragment>
     <fragment android:id="@+id/secondMenuFragment" android:name="com.aldi.punyaaldi.menu.SecondMenuFragment"
               android:label="fragment_second_menu" tools:layout="@layout/fragment_second_menu"/>
     <fragment android:id="@+id/thirdMenuFragment" android:name="com.aldi.punyaaldi.menu.ThirdMenuFragment"
               android:label="fragment_third_menu" tools:layout="@layout/fragment_third_menu"/>
+    <activity android:id="@+id/slideScreen" android:name="com.aldi.punyaaldi.slidepage.SlideScreen"
+              android:label="SlideScreen"/>
 </navigation>
