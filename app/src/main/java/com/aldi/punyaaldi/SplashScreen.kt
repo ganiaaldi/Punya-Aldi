@@ -3,7 +3,7 @@ package com.aldi.punyaaldi
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.aldi.punyaaldi.com.aldi.punyaaldi.slidepage.SlideScreen
+import com.aldi.punyaaldi.slidepage.SlideScreen
 
 
 class SplashScreen:AppCompatActivity() {

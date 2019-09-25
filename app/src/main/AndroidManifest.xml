@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".com.aldi.punyaaldi.slidepage.SlideScreen">
+        <activity android:name="com.aldi.punyaaldi.slidepage.SlideScreen">
         </activity>
         <activity android:name=".MainActivity">
         </activity>

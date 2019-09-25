@@ -1,4 +1,4 @@
-package com.aldi.punyaaldi.com.aldi.punyaaldi.slidepage
+package com.aldi.punyaaldi.slidepage
 
 import android.content.Context
 import android.content.SharedPreferences

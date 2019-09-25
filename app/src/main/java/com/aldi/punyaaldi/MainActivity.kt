@@ -3,8 +3,8 @@ package com.aldi.punyaaldi
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.aldi.punyaaldi.com.aldi.punyaaldi.slidepage.PrefManager
-import com.aldi.punyaaldi.com.aldi.punyaaldi.slidepage.SlideScreen
+import com.aldi.punyaaldi.slidepage.PrefManager
+import com.aldi.punyaaldi.slidepage.SlideScreen
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
