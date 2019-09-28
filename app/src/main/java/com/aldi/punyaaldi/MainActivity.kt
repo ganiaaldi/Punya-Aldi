@@ -21,8 +21,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.aldi.punyaaldi.`interface`.FragmentInteraction
-import com.aldi.punyaaldi.`interface`.ToolbarTitleListener
+import com.aldi.punyaaldi.`interface`.ChangeToolbarTitle
 import com.aldi.punyaaldi.menu.FirstMenuFragment
 import com.aldi.punyaaldi.menu.SecondMenuFragment
 import com.aldi.punyaaldi.menu.ThirdMenuFragment
@@ -33,15 +32,14 @@ import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_first_menu.*
 
-class MainActivity : AppCompatActivity(), ToolbarTitleListener {
-    private lateinit var mNavController: NavController
+class MainActivity : AppCompatActivity(), ChangeToolbarTitle {
+    private lateinit var mainNavControl: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var mBottomNav: BottomNavigationView
+    private lateinit var mainBottomNav: BottomNavigationView
     private lateinit var host: NavHostFragment
-    private lateinit var mToolbar: Toolbar
-    private lateinit var mToolbarTitle: TextView
-    private var mBackPressCounter = 0
-    private var isOnPersonalThreadFragment: Boolean = false
+    private lateinit var mainToolbar: Toolbar
+    private lateinit var mainToolbarTitle: TextView
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,10 +49,10 @@ class MainActivity : AppCompatActivity(), ToolbarTitleListener {
      //   setupMenu()
         setupNavController()
         setupDrawer()
-        setupActionBar(mNavController, appBarConfiguration)
-        setupNavigationMenu(mNavController)
-        setupBottomNavMenu(mNavController)
-        mBackPressCounter = 0
+        setupActionBar(mainNavControl, appBarConfiguration)
+        showNavigationMenu(mainNavControl)
+        showBottomMenu(mainNavControl)
+
     }
 
    //  fun showSlider() {
@@ -70,19 +68,19 @@ class MainActivity : AppCompatActivity(), ToolbarTitleListener {
     }
 
     override fun updateTitle(title: String) {
-        mToolbarTitle.text = title
+        mainToolbarTitle.text = title
     }
 
     override fun toolbarAction(onClickListener: View.OnClickListener) {
-        mToolbar.setOnClickListener(onClickListener)
+        mainToolbar.setOnClickListener(onClickListener)
     }
 
     override fun updateNavIcon(drawable: Drawable) {
-        mToolbar.navigationIcon = drawable
+        mainToolbar.navigationIcon = drawable
     }
 
     override fun showToolbar(show: Boolean) {
-        mToolbar.visibility = if (show) {
+        mainToolbar.visibility = if (show) {
             View.VISIBLE
         } else {
             View.GONE
@@ -90,38 +88,11 @@ class MainActivity : AppCompatActivity(), ToolbarTitleListener {
     }
 
     override fun onBackPressed() {
-        if (isOnPersonalThreadFragment) {
-            mBackPressCounter++
-            if (mBackPressCounter == 2) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    finishAndRemoveTask()
-                } else {
-                    finish()
-                }
-            } else {
-                Toast.makeText(this, R.string.confirm_exit, Toast.LENGTH_SHORT).show()
-            }
-        } else {
-            val consumed = primary_navigation_fragment.childFragmentManager.fragments.let {
-                if ( it.size > 0 && it[0] is FragmentInteraction){
-                    (it[0] as FragmentInteraction).onBackPressed()
-                } else {
-                    false
-                }
+                finish()
             }
 
-            val fragmentsSize = host.childFragmentManager.fragments.size
 
-            mBackPressCounter = 0
-
-            if (!consumed && fragmentsSize > 1) {
-                super.onBackPressed()
-            } else {
-                findNavController(R.id.primary_navigation_fragment).navigateUp(appBarConfiguration)
-            }
-        }
-    }
-
+    //option 2
     private fun setupMenu(){
         val  mNavSelec = BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when(item.itemId){
@@ -151,12 +122,12 @@ class MainActivity : AppCompatActivity(), ToolbarTitleListener {
             .setCustomAnimations(R.anim.design_bottom_sheet_slide_in,R.anim.design_bottom_sheet_slide_out)
             .replace(R.id.content,fragment, fragment.javaClass.getSimpleName())
             .commit()
-    }
+    } // end here option2
 
     private fun setupNavController() {
         host = supportFragmentManager
             .findFragmentById(R.id.primary_navigation_fragment) as NavHostFragment? ?: return
-        mNavController = host.navController
+        mainNavControl = host.navController
     }
 
     private fun setupDrawer() {
@@ -186,26 +157,26 @@ class MainActivity : AppCompatActivity(), ToolbarTitleListener {
         })
     }
 
-    private fun setupBottomNavMenu(navController: NavController) {
-        mBottomNav = findViewById(R.id.menu_bottom)
-        mBottomNav.setupWithNavController(navController)
+    private fun showBottomMenu(navController: NavController) {
+        mainBottomNav = findViewById(R.id.menu_bottom)
+        mainBottomNav.setupWithNavController(navController)
 
-        mNavController.addOnDestinationChangedListener { _, destination, _ ->
+        mainNavControl.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.thirdMenuFragment ||
                 destination.id == R.id.secondMenuFragment ||
                 destination.id == R.id.firstMenuFragment
             ) {
-                mToolbarTitle.text=destination.label
+                mainToolbarTitle.text=destination.label
                 drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
-                showBottomNavigation()
+                showBottomMenu()
             } else {
                 drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-                hideBottomNavigation()
+                hideBottomMenu()
             }
         }
     }
 
-    private fun setupNavigationMenu(navController: NavController) {
+    private fun showNavigationMenu(navController: NavController) {
         val sideNavView = findViewById<NavigationView>(R.id.menu_navigation)
         sideNavView?.setupWithNavController(navController)
         sideNavView.itemIconTintList = null
@@ -213,26 +184,24 @@ class MainActivity : AppCompatActivity(), ToolbarTitleListener {
     }
 
     private fun setupDrawerHeader(navView: NavigationView) {
-
     }
 
     private fun loadAvatar(){
-
     }
 
     private fun setupActionBar(
         navController: NavController,
         appBarConfig: AppBarConfiguration
     ) {
-        mToolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(mToolbar)
-        mToolbarTitle = mToolbar.findViewById(R.id.toolbarTitle)
+        mainToolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(mainToolbar)
+        mainToolbarTitle = mainToolbar.findViewById(R.id.toolbarTitle)
         setupActionBarWithNavController(navController, appBarConfig)
     }
 
-    private fun hideBottomNavigation() {
+    private fun hideBottomMenu() {
         // bottom_navigation is BottomNavigationView
-        with(mBottomNav) {
+        with(mainBottomNav) {
             if (visibility == View.VISIBLE && alpha == 1f) {
                 animate()
                     .alpha(0f)
@@ -242,9 +211,9 @@ class MainActivity : AppCompatActivity(), ToolbarTitleListener {
         }
     }
 
-    private fun showBottomNavigation() {
+    private fun showBottomMenu() {
         // bottom_navigation is BottomNavigationView
-        with(mBottomNav) {
+        with(mainBottomNav) {
             visibility = View.VISIBLE
             animate()
                 .alpha(1f)

@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 
 import com.aldi.punyaaldi.R
-import com.aldi.punyaaldi.`interface`.ToolbarTitleListener
+import com.aldi.punyaaldi.`interface`.ChangeToolbarTitle
 import com.aldi.punyaaldi.slidepage.PrefManager
 import com.aldi.punyaaldi.slidepage.SlideScreen
 import kotlinx.android.synthetic.main.fragment_first_menu.*
@@ -28,8 +28,8 @@ class FirstMenuFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as ToolbarTitleListener).showToolbar(true)
-        (activity as ToolbarTitleListener).updateTitle("Fragment Menu 1")
+        (activity as ChangeToolbarTitle).showToolbar(true)
+        (activity as ChangeToolbarTitle).updateTitle("Fragment Menu 1")
         showSlider()
     }
 
