@@ -17,10 +17,10 @@
          <item
                  android:id="@+id/drawerMenu4"
                  android:icon="@drawable/ic_face"
-                 android:title="@string/title_menu" />
+                 android:title="Login" />
          <item
                  android:id="@+id/drawerMenu5"
                  android:icon="@drawable/ic_face"
-                 android:title="@string/title_menu" />
+                 android:title="Register" />
     </group>
 </menu>

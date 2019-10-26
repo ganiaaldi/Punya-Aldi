@@ -5,12 +5,14 @@ import android.graphics.drawable.Drawable
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -38,6 +40,7 @@ class MainActivity : AppCompatActivity(), ChangeToolbarTitle {
     private lateinit var mainBottomNav: BottomNavigationView
     private lateinit var host: NavHostFragment
     private lateinit var mainToolbar: Toolbar
+    private lateinit var drawerLayout: DrawerLayout
     private lateinit var mainToolbarTitle: TextView
 
 
@@ -92,7 +95,7 @@ class MainActivity : AppCompatActivity(), ChangeToolbarTitle {
             }
 
 
-    //option 2
+    /**
     private fun setupMenu(){
         val  mNavSelec = BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when(item.itemId){
@@ -122,7 +125,7 @@ class MainActivity : AppCompatActivity(), ChangeToolbarTitle {
             .setCustomAnimations(R.anim.design_bottom_sheet_slide_in,R.anim.design_bottom_sheet_slide_out)
             .replace(R.id.content,fragment, fragment.javaClass.getSimpleName())
             .commit()
-    } // end here option2
+    }  end here option2 **/
 
     private fun setupNavController() {
         host = supportFragmentManager
@@ -131,9 +134,9 @@ class MainActivity : AppCompatActivity(), ChangeToolbarTitle {
     }
 
     private fun setupDrawer() {
-        val drawerLayout: DrawerLayout? = findViewById(R.id.drawer_layout)
+        drawerLayout = findViewById(R.id.drawer_layout)
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.thirdMenuFragment, R.id.secondMenuFragment, R.id.firstMenuFragment),
+            setOf(R.id.thirdMenuFragment, R.id.secondMenuFragment, R.id.firstMenuFragment, R.id.loginFragment, R.id.registerFragment),
             drawerLayout
        )
 
@@ -177,11 +180,65 @@ class MainActivity : AppCompatActivity(), ChangeToolbarTitle {
     }
 
     private fun showNavigationMenu(navController: NavController) {
-        val sideNavView = findViewById<NavigationView>(R.id.menu_navigation)
-        sideNavView?.setupWithNavController(navController)
-        sideNavView.itemIconTintList = null
-        setupDrawerHeader(sideNavView)
+        val sideNavView : NavigationView = findViewById(R.id.menu_navigation)
+        sideNavView.setupWithNavController(navController)
+         sideNavView.setNavigationItemSelectedListener { menuItem ->
+             // set item as selected to persist highlight
+             menuItem.isChecked = true
+             // close drawer when item is tapped
+             drawerLayout.closeDrawers()
+
+             // Handle navigation view item clicks here.
+             when (menuItem.itemId) {
+
+                 R.id.drawerMenu1 -> {
+                     navController.navigate(R.id.firstMenuFragment)
+                 }
+                 R.id.drawerMenu2 -> {
+                     navController.navigate(R.id.secondMenuFragment)
+                 }
+                 R.id.drawerMenu3 -> {
+                     navController.navigate(R.id.thirdMenuFragment)
+                 }
+                 R.id.drawerMenu4 -> {
+                 navController.navigate(R.id.loginFragment)
+                 }
+                 R.id.drawerMenu5 -> {
+                     navController.navigate(R.id.registerFragment)
+                 }
+             }
+             // Add code here to update the UI based on the item selected
+             // For example, swap UI fragments here
+             true
+         }
+         }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                drawerLayout.openDrawer(GravityCompat.START)
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
     }
+        /** sideNavView.setupWithNavController(navController)
+        setupDrawerHeader(sideNavView)
+        mainNavControl.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.loginFragment ||
+                destination.id == R.id.registerFragment ||
+                destination.id == R.id.loginFragment ||
+                destination.id == R.id.registerFragment ||
+                destination.id == R.id.loginFragment
+            ) {
+                mainToolbarTitle.text=destination.label
+                drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+            } else {
+                drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+            }
+        }
+    } **/
 
     private fun setupDrawerHeader(navView: NavigationView) {
     }

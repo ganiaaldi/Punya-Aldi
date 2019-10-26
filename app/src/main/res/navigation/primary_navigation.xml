@@ -14,4 +14,8 @@
               android:label="fragment_third_menu" tools:layout="@layout/fragment_third_menu"/>
     <activity android:id="@+id/slideScreen" android:name="com.aldi.punyaaldi.slidepage.SlideScreen"
               android:label="SlideScreen"/>
+    <fragment android:id="@+id/loginFragment" android:name="com.aldi.punyaaldi.auth.LoginFragment"
+              android:label="fragment_login" tools:layout="@layout/fragment_login"/>
+    <fragment android:id="@+id/registerFragment" android:name="com.aldi.punyaaldi.auth.RegisterFragment"
+              android:label="fragment_register" tools:layout="@layout/fragment_register"/>
 </navigation>
