@@ -223,22 +223,6 @@ class MainActivity : AppCompatActivity(), ChangeToolbarTitle {
             else -> super.onOptionsItemSelected(item)
         }
     }
-        /** sideNavView.setupWithNavController(navController)
-        setupDrawerHeader(sideNavView)
-        mainNavControl.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.loginFragment ||
-                destination.id == R.id.registerFragment ||
-                destination.id == R.id.loginFragment ||
-                destination.id == R.id.registerFragment ||
-                destination.id == R.id.loginFragment
-            ) {
-                mainToolbarTitle.text=destination.label
-                drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
-            } else {
-                drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-            }
-        }
-    } **/
 
     private fun setupDrawerHeader(navView: NavigationView) {
     }
